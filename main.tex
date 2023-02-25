@@ -5,7 +5,7 @@
 %\usetocstyle{KOMAlike} %the previous line resets it
 %\usepackage{natbib}
 \usepackage{biblatex}
-\addbibresource[]{ref.bib}
+\addbibresource[]{sample.bib}
 \usepackage{url}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -128,12 +128,11 @@
 		
 			\begin{flushleft} 
 			\emph{Team Member Names :} \\
-			Last Name, First Name\linebreak
-			Last Name, First Name\linebreak
-			Last Name, First Name\linebreak
-			Last Name, First Name\linebreak
-			Last Name, First Name\linebreak
-			Last Name, First Name\linebreak
+			Stumpf, Blake\linebreak
+			Andrew, Dresen\linebreak
+			Kaden, Kotvis\linebreak
+			Casey, Kolbeck\linebreak
+			Samuel, Burchett\linebreak
 			
 		\end{flushleft}
 	\end{minipage}\\[2 cm]
@@ -149,92 +148,68 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{ABSTRACT}
-The abstract is a summary of your proposal. In general, your abstract should have enough information so that if I was to copy and paste your abstract into a web site, people would get the general idea of what your proposal is about. It should not go into any heavy detail, just the basics of what your project is about. The who, the what, and the why. You should keep your abstract to 200-400 words. Use this to ``hook in'' your reader.
+
+I can cite! \cite{einstein} or this \cite{dirac}.
 
 \section{INTRODUCTION}
-While the abstract and introduction may seem like it is similar, remember that your abstract should have enough information to stand on its own. The introduction is really the actual start to your proposal. Here you should introduce the project, the people involved and give a short introduction to the why you are doing this. This should be 1-3 paragraphs.
+Reaction time slowly demises as a person gets older. This can be detrimental as daily life becomes harder and harder. As a way to practice reaction time and test a person's reaction, our team, The Bleacher Creatures from Mars, are developing a fun game. The game known as Bleacher Creatures Destroy Features will be similar to the classical game breakout!
+
+The game will be created and tested on an Adafruit Clue board. Using buttons, sensors, and the display we will recreate a game like Breakout. In the game a person will control a moving platform, which will go back and forth across the screen. There will then be a ball bouncing around which can break blocks at the top. The person must use the platform to bounce the ball to break all the blocks to win. This game will be fun for all ages and will be great practice for a person's reaction time.
+
 
 \section{FEATURES}
 Your Features section must include a listing of at least three key features that makes your project unique. Each item needs to be backed up with a description of what it will do and why. A listing of just three items is not enough, you need to describe what those features are and why your group feels they are needed. For that reason your features should have a paragraph for each key item that describes what that key feature is. A key feature should be something that is significant to your project. For example, a key feature an autopilot system is the ability to be able to set an altitude and the autopilot will automatically set the airspeed. That is a significant feature that has a large impact on that system.
 
 
-% Below is an example of inserting an image.  Not that LaTex
-% will determine the best location for the image.  Make sure
-% you replace this image with yours and place a proper caption.
-% You can use the \label{name} to name the figure and then reference
-% it from your writeup and LaTeX will automatically give it the correct
-% number. 
-\begin{figure}[!t]
-\centering
-\includegraphics[width=4.5in]{cpx01.jpg}
-\caption{This is the Circuit Playground Express}
-\label{fig:cpx}
-\end{figure}
-
 \section{PROBLEM STATEMENT}
-Here you will go into more detail on what problem you hope to solve or address.  You should discuss what the problem is and why it is important to solve it. In this section, you need to be clear on what the problem is, so do not think of this as a ``light'' section. It helps to define your project.
 
-Your team needs to do some research into the problem at hand. Becuase of that, you should have around two to three references that you are pulling from. There are lots of places you can find references from including the ISU library and Google Scholar. I would also suggest looking at Adafruit's website, as you may find inspiration or looking to improve something already there. Remember to cite your sources though. If you find something online, that can often be citation.
-
-When you create your ``ref.bib'' file, don't forget to follow the standards for a BiBTex file. Certain things like webistes requires certain keywords for it to render properly. There are lots of sources online to help with this and many places like the ISU Library and Google Scholar can also generate text that is compatible with a BiBTex file. Once you have your Bib file ready, don't forget to cite your citations in your proposal like this \cite{einstein} or this \cite{dirac}.
 
 \section{PROBLEM SOLUTION}
-Here go over your approach to your solution and what your solution is. You must include at least one image that shows your concept. This image can be a sketch or drawing or some pictures that show your concept. Make sure you reference the image(s) like this - Figure \ref{fig:cpx}. Finally, make sure you replace the stock image I included. You should also reference any sources you had from your problem statement as well.
+One of the most enjoyable ways to increase someones reaction time is games. That is why our solution is a take on a fun and simple game, breakout. The display will be on an Adafruit Clue board and the controller will be a pair of buttons if possible otherwise it will interface with a computer keyboard. Figure \ref{fig:Breakout_Screen} shows the screen of the game. As one can see a circle bounces off the walls around the screen and the green paddle at the bottom of the screen. The buttons then allow the user to move the paddle back and forth and try to hit the blocks. When a block is hit, it disappears. The goal of the game is to clear all the blocks from the screen. The parts needed for the game are listed in table \ref{table:BOM}.
 
-You must also include a table that lists all the parts that you wish to have. As announced in class, you will have the parts listed in Table \ref{table:parts_list}. We have plenty of two additional parts. Those are a conductive adhesive strip and a neopixel strip. I do have some other parts, such as arcade buttons and some additional sensors. You can certainly ask for something, and I will see what I can do. Change the table below to reflect the parts you are requesting.
+\begin{figure}[ht]
+\centering
+\includegraphics[width=4in]{images/Breakout_Screen.png}
+\caption{Example breakout game running.}
+\label{fig:Breakout_Screen}
+\end{figure}
 
-\begin{table}[ht]
-  \caption{Parts available for teams}
-  \label{table:parts_list}
-  \begin{center}
-  \begin{tabular}{|p{3in}|c|}
-  
-  \hline
-  Part description & Qty\\
-  \hline
-  \hline
-  Adafruit Circuit Playground Express & 1 \\
-  \hline
-  AAA Battery Holder & 1 \\
-  \hline
-  USB Cable & 1 \\
-  \hline
-  \end{tabular}
-  \end{center}
-  \end{table}
+\begin{table}
+\centering
+\begin{tabular}{ |p{4cm}|p{1.5cm}|}
+\hline
+\multicolumn{2}{|c|}{Part List} \\
+\hline
+Part Description& Quantity \\
+\hline
+Adafruit Clue & 1 \\
+AAA Battery Holder & 1 \\
+USB Cable &1 \\
+\hline
+\multicolumn{2}{|c|}{Need 1 of the Items Below} \\
+\hline
+Buttons & 2 \\
+Keyboard & 1 \\
+\hline
+\end{tabular}
+\caption{The bill of materials for this project.}
+\label{table:BOM}
+\end{table}
 
-Finally, you can also include any pseudo code or any code snippets you have gathered so far.  This is not required, but if you found some starter code or came up with some ideas for the code, put it here. If you want to embed code into \LaTeX, you can use the example below on how to do this in \LaTeX.
 
-\begin{lstlisting}[language=Arduino]
-#include <Adafruit_CircuitPlayground.h>
 
-void setup() {
-  CircuitPlayground.begin();
-}
 
-void loop() {
-  CircuitPlayground.clearPixels();
 
-  delay(500);
 
-  CircuitPlayground.setPixelColor(0, 255,   0,   0);
-  CircuitPlayground.setPixelColor(1, 128, 128,   0);
-  CircuitPlayground.setPixelColor(2,   0, 255,   0);
-  CircuitPlayground.setPixelColor(3,   0, 128, 128);
-  CircuitPlayground.setPixelColor(4,   0,   0, 255);
-  
-  CircuitPlayground.setPixelColor(5, 0xFF0000);
-  CircuitPlayground.setPixelColor(6, 0x808000);
-  CircuitPlayground.setPixelColor(7, 0x00FF00);
-  CircuitPlayground.setPixelColor(8, 0x008080);
-  CircuitPlayground.setPixelColor(9, 0x0000FF);
- 
-  delay(5000);
-}
-\end{lstlisting}
+
+
+
 
 \section{CONCLUSION}
-Finally, wrap up your proposal. This only needs to be one or two paragraphs, but it should conclude with what you plan to do and the why and how. Yes, this may seem repetitive, but that is intentional. Do not forget to update your references as those will appear below in a seperate page.
+Testing and practicing reflexes can be very important to those who have seen a decline in that action. To help test and improve reflexes our team decided a game would be a great test, not to mention fun so we have decided to base our game off of one of the classics, breakout. Even more convenient, our game will be portable so our users can improve their reflexes whenever they have a free moment. 
+
+Our project will be programmed on the Adafruit Clue board and will utilize the screen and take user input through the buttons on the board. An important thing to ensure is that the game runs at the correct speed so that our main goal of improving and testing reflexes is effective. Overall our game will be an effective way of improving and testing reflexes, and will present challenges for our group in utilizing the screen, button inputs, and ensuring the game runs smoothly using the low power processor.
+
 
 \newpage
 %\section{References}
