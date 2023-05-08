@@ -31,165 +31,330 @@ int gamespeed = 0;
 
 void setup()
 {
-  block[0] = true;
-  block_y0[0] = 15;
-  block_x0[0] = 10;
-  block_ylen[0] = 10;
-  block_xlen[0] = 35;
-  pointVal[0] = 10;
-  colorVec[0] = ARCADA_BLUE;
+  srand(time(NULL));
+  int r = rand() & 1;
 
-  block[1] = true;
-  block_y0[1] = 15;
-  block_x0[1] = 55;
-  block_ylen[1] = 10;
-  block_xlen[1] = 35;
-  pointVal[1] = 10;
-  colorVec[1] = ARCADA_BLUE;
+  if r = 0  {
+    block[0] = true;
+    block_y0[0] = 15;
+    block_x0[0] = 10;
+    block_ylen[0] = 10;
+    block_xlen[0] = 35;
+    pointVal[0] = 10;
+    colorVec[0] = ARCADA_BLUE;
 
-  block[2] = true;
-  block_y0[2] = 15;
-  block_x0[2] = 100;
-  block_ylen[2] = 10;
-  block_xlen[2] = 35;
-  pointVal[2] = 10;
-  colorVec[2] = ARCADA_BLUE;
+    block[1] = false;
+    block_y0[1] = 15;
+    block_x0[1] = 55;
+    block_ylen[1] = 10;
+    block_xlen[1] = 35;
+    pointVal[1] = 10;
+    colorVec[1] = ARCADA_BLUE;
 
-  block[3] = true;
-  block_y0[3] = 15;
-  block_x0[3] = 145;
-  block_ylen[3] = 10;
-  block_xlen[3] = 35;
-  pointVal[3] = 10;
-  colorVec[3] = ARCADA_BLUE;
+    block[2] = true;
+    block_y0[2] = 15;
+    block_x0[2] = 100;
+    block_ylen[2] = 10;
+    block_xlen[2] = 35;
+    pointVal[2] = 10;
+    colorVec[2] = ARCADA_BLUE;
 
-  block[4] = true;
-  block_y0[4] = 15;
-  block_x0[4] = 190;
-  block_ylen[4] = 10;
-  block_xlen[4] = 35;
-  pointVal[4] = 10;
-  colorVec[4] = ARCADA_BLUE;
+    block[3] = false;
+    block_y0[3] = 15;
+    block_x0[3] = 145;
+    block_ylen[3] = 10;
+    block_xlen[3] = 35;
+    pointVal[3] = 10;
+    colorVec[3] = ARCADA_BLUE;
 
-  block[5] = true;
-  block_y0[5] = 35;
-  block_x0[5] = 10;
-  block_ylen[5] = 10;
-  block_xlen[5] = 35;
-  pointVal[5] = 5;
-  colorVec[5] = ARCADA_ORANGE;
+    block[4] = true;
+    block_y0[4] = 15;
+    block_x0[4] = 190;
+    block_ylen[4] = 10;
+    block_xlen[4] = 35;
+    pointVal[4] = 10;
+    colorVec[4] = ARCADA_BLUE;
 
-  block[6] = true;
-  block_y0[6] = 35;
-  block_x0[6] = 55;
-  block_ylen[6] = 10;
-  block_xlen[6] = 35;
-  pointVal[6] = 5;
-  colorVec[6] = ARCADA_ORANGE;
+    block[5] = false;
+    block_y0[5] = 35;
+    block_x0[5] = 10;
+    block_ylen[5] = 10;
+    block_xlen[5] = 35;
+    pointVal[5] = 5;
+    colorVec[5] = ARCADA_ORANGE;
 
-  block[7] = true;
-  block_y0[7] = 35;
-  block_x0[7] = 100;
-  block_ylen[7] = 10;
-  block_xlen[7] = 35;
-  pointVal[7] = 5;
-  colorVec[7] = ARCADA_ORANGE;
+    block[6] = true;
+    block_y0[6] = 35;
+    block_x0[6] = 55;
+    block_ylen[6] = 10;
+    block_xlen[6] = 35;
+    pointVal[6] = 5;
+    colorVec[6] = ARCADA_ORANGE;
 
-  block[8] = true;
-  block_y0[8] = 35;
-  block_x0[8] = 145;
-  block_ylen[8] = 10;
-  block_xlen[8] = 35;
-  pointVal[8] = 5;
-  colorVec[8] = ARCADA_ORANGE;
+    block[7] = false;
+    block_y0[7] = 35;
+    block_x0[7] = 100;
+    block_ylen[7] = 10;
+    block_xlen[7] = 35;
+    pointVal[7] = 5;
+    colorVec[7] = ARCADA_ORANGE;
 
-  block[9] = true;
-  block_y0[9] = 35;
-  block_x0[9] = 190;
-  block_ylen[9] = 10;
-  block_xlen[9] = 35;
-  pointVal[9] = 5;
-  colorVec[9] = ARCADA_ORANGE;
+    block[8] = true;
+    block_y0[8] = 35;
+    block_x0[8] = 145;
+    block_ylen[8] = 10;
+    block_xlen[8] = 35;
+    pointVal[8] = 5;
+    colorVec[8] = ARCADA_ORANGE;
 
-  block[10] = true;
-  block_y0[10] = 55;
-  block_x0[10] = 10;
-  block_ylen[10] = 10;
-  block_xlen[10] = 35;
-  pointVal[10] = 3;
-  colorVec[10] = ARCADA_YELLOW;
+    block[9] = false;
+    block_y0[9] = 35;
+    block_x0[9] = 190;
+    block_ylen[9] = 10;
+    block_xlen[9] = 35;
+    pointVal[9] = 5;
+    colorVec[9] = ARCADA_ORANGE;
 
-  block[11] = true;
-  block_y0[11] = 55;
-  block_x0[11] = 55;
-  block_ylen[11] = 10;
-  block_xlen[11] = 35;
-  pointVal[11] = 3;
-  colorVec[11] = ARCADA_YELLOW;
+    block[10] = true;
+    block_y0[10] = 55;
+    block_x0[10] = 10;
+    block_ylen[10] = 10;
+    block_xlen[10] = 35;
+    pointVal[10] = 3;
+    colorVec[10] = ARCADA_YELLOW;
 
-  block[12] = true;
-  block_y0[12] = 55;
-  block_x0[12] = 100;
-  block_ylen[12] = 10;
-  block_xlen[12] = 35;
-  pointVal[12] = 3;
-  colorVec[12] = ARCADA_YELLOW;
+    block[11] = false;
+    block_y0[11] = 55;
+    block_x0[11] = 55;
+    block_ylen[11] = 10;
+    block_xlen[11] = 35;
+    pointVal[11] = 3;
+    colorVec[11] = ARCADA_YELLOW;
 
-  block[13] = true;
-  block_y0[13] = 55;
-  block_x0[13] = 145;
-  block_ylen[13] = 10;
-  block_xlen[13] = 35;
-  pointVal[13] = 3;
-  colorVec[13] = ARCADA_YELLOW;
+    block[12] = true;
+    block_y0[12] = 55;
+    block_x0[12] = 100;
+    block_ylen[12] = 10;
+    block_xlen[12] = 35;
+    pointVal[12] = 3;
+    colorVec[12] = ARCADA_YELLOW;
 
-  block[14] = true;
-  block_y0[14] = 55;
-  block_x0[14] = 190;
-  block_ylen[14] = 10;
-  block_xlen[14] = 35;
-  pointVal[14] = 3;
-  colorVec[14] = ARCADA_YELLOW;
+    block[13] = false;
+    block_y0[13] = 55;
+    block_x0[13] = 145;
+    block_ylen[13] = 10;
+    block_xlen[13] = 35;
+    pointVal[13] = 3;
+    colorVec[13] = ARCADA_YELLOW;
 
-  block[15] = true;
-  block_y0[15] = 75;
-  block_x0[15] = 10;
-  block_ylen[15] = 10;
-  block_xlen[15] = 35;
-  pointVal[15] = 1;
-  colorVec[15] = ARCADA_GREEN;
+    block[14] = true;
+    block_y0[14] = 55;
+    block_x0[14] = 190;
+    block_ylen[14] = 10;
+    block_xlen[14] = 35;
+    pointVal[14] = 3;
+    colorVec[14] = ARCADA_YELLOW;
 
-  block[16] = true;
-  block_y0[16] = 75;
-  block_x0[16] = 55;
-  block_ylen[16] = 10;
-  block_xlen[16] = 35;
-  pointVal[16] = 1;
-  colorVec[16] = ARCADA_GREEN;
+    block[15] = false;
+    block_y0[15] = 75;
+    block_x0[15] = 10;
+    block_ylen[15] = 10;
+    block_xlen[15] = 35;
+    pointVal[15] = 1;
+    colorVec[15] = ARCADA_GREEN;
 
-  block[17] = true;
-  block_y0[17] = 75;
-  block_x0[17] = 100;
-  block_ylen[17] = 10;
-  block_xlen[17] = 35;
-  pointVal[17] = 1;
-  colorVec[17] = ARCADA_GREEN;
+    block[16] = true;
+    block_y0[16] = 75;
+    block_x0[16] = 55;
+    block_ylen[16] = 10;
+    block_xlen[16] = 35;
+    pointVal[16] = 1;
+    colorVec[16] = ARCADA_GREEN;
 
-  block[18] = true;
-  block_y0[18] = 75;
-  block_x0[18] = 145;
-  block_ylen[18] = 10;
-  block_xlen[18] = 35;
-  pointVal[18] = 1;
-  colorVec[18] = ARCADA_GREEN;
+    block[17] = false;
+    block_y0[17] = 75;
+    block_x0[17] = 100;
+    block_ylen[17] = 10;
+    block_xlen[17] = 35;
+    pointVal[17] = 1;
+    colorVec[17] = ARCADA_GREEN;
 
-  block[19] = true;
-  block_y0[19] = 75;
-  block_x0[19] = 190;
-  block_ylen[19] = 10;
-  block_xlen[19] = 35;
-  pointVal[19] = 1;
-  colorVec[19] = ARCADA_GREEN;
+    block[18] = true;
+    block_y0[18] = 75;
+    block_x0[18] = 145;
+    block_ylen[18] = 10;
+    block_xlen[18] = 35;
+    pointVal[18] = 1;
+    colorVec[18] = ARCADA_GREEN;
+
+    block[19] = false;
+    block_y0[19] = 75;
+    block_x0[19] = 190;
+    block_ylen[19] = 10;
+    block_xlen[19] = 35;
+    pointVal[19] = 1;
+    colorVec[19] = ARCADA_GREEN;
+  else
+    block[0] = true;
+    block_y0[0] = 15;
+    block_x0[0] = 10;
+    block_ylen[0] = 10;
+    block_xlen[0] = 35;
+    pointVal[0] = 10;
+    colorVec[0] = ARCADA_BLUE;
+
+    block[1] = true;
+    block_y0[1] = 15;
+    block_x0[1] = 55;
+    block_ylen[1] = 10;
+    block_xlen[1] = 35;
+    pointVal[1] = 10;
+    colorVec[1] = ARCADA_BLUE;
+
+    block[2] = true;
+    block_y0[2] = 15;
+    block_x0[2] = 100;
+    block_ylen[2] = 10;
+    block_xlen[2] = 35;
+    pointVal[2] = 10;
+    colorVec[2] = ARCADA_BLUE;
+
+    block[3] = true;
+    block_y0[3] = 15;
+    block_x0[3] = 145;
+    block_ylen[3] = 10;
+    block_xlen[3] = 35;
+    pointVal[3] = 10;
+    colorVec[3] = ARCADA_BLUE;
+
+    block[4] = true;
+    block_y0[4] = 15;
+    block_x0[4] = 190;
+    block_ylen[4] = 10;
+    block_xlen[4] = 35;
+    pointVal[4] = 10;
+    colorVec[4] = ARCADA_BLUE;
+
+    block[5] = true;
+    block_y0[5] = 35;
+    block_x0[5] = 10;
+    block_ylen[5] = 10;
+    block_xlen[5] = 35;
+    pointVal[5] = 5;
+    colorVec[5] = ARCADA_ORANGE;
+
+    block[6] = true;
+    block_y0[6] = 35;
+    block_x0[6] = 55;
+    block_ylen[6] = 10;
+    block_xlen[6] = 35;
+    pointVal[6] = 5;
+    colorVec[6] = ARCADA_ORANGE;
+
+    block[7] = true;
+    block_y0[7] = 35;
+    block_x0[7] = 100;
+    block_ylen[7] = 10;
+    block_xlen[7] = 35;
+    pointVal[7] = 5;
+    colorVec[7] = ARCADA_ORANGE;
+
+    block[8] = true;
+    block_y0[8] = 35;
+    block_x0[8] = 145;
+    block_ylen[8] = 10;
+    block_xlen[8] = 35;
+    pointVal[8] = 5;
+    colorVec[8] = ARCADA_ORANGE;
+
+    block[9] = true;
+    block_y0[9] = 35;
+    block_x0[9] = 190;
+    block_ylen[9] = 10;
+    block_xlen[9] = 35;
+    pointVal[9] = 5;
+    colorVec[9] = ARCADA_ORANGE;
+
+    block[10] = true;
+    block_y0[10] = 55;
+    block_x0[10] = 10;
+    block_ylen[10] = 10;
+    block_xlen[10] = 35;
+    pointVal[10] = 3;
+    colorVec[10] = ARCADA_YELLOW;
+
+    block[11] = true;
+    block_y0[11] = 55;
+    block_x0[11] = 55;
+    block_ylen[11] = 10;
+    block_xlen[11] = 35;
+    pointVal[11] = 3;
+    colorVec[11] = ARCADA_YELLOW;
+
+    block[12] = true;
+    block_y0[12] = 55;
+    block_x0[12] = 100;
+    block_ylen[12] = 10;
+    block_xlen[12] = 35;
+    pointVal[12] = 3;
+    colorVec[12] = ARCADA_YELLOW;
+
+    block[13] = true;
+    block_y0[13] = 55;
+    block_x0[13] = 145;
+    block_ylen[13] = 10;
+    block_xlen[13] = 35;
+    pointVal[13] = 3;
+    colorVec[13] = ARCADA_YELLOW;
+
+    block[14] = true;
+    block_y0[14] = 55;
+    block_x0[14] = 190;
+    block_ylen[14] = 10;
+    block_xlen[14] = 35;
+    pointVal[14] = 3;
+    colorVec[14] = ARCADA_YELLOW;
+
+    block[15] = true;
+    block_y0[15] = 75;
+    block_x0[15] = 10;
+    block_ylen[15] = 10;
+    block_xlen[15] = 35;
+    pointVal[15] = 1;
+    colorVec[15] = ARCADA_GREEN;
+
+    block[16] = true;
+    block_y0[16] = 75;
+    block_x0[16] = 55;
+    block_ylen[16] = 10;
+    block_xlen[16] = 35;
+    pointVal[16] = 1;
+    colorVec[16] = ARCADA_GREEN;
+
+    block[17] = true;
+    block_y0[17] = 75;
+    block_x0[17] = 100;
+    block_ylen[17] = 10;
+    block_xlen[17] = 35;
+    pointVal[17] = 1;
+    colorVec[17] = ARCADA_GREEN;
+
+    block[18] = true;
+    block_y0[18] = 75;
+    block_x0[18] = 145;
+    block_ylen[18] = 10;
+    block_xlen[18] = 35;
+    pointVal[18] = 1;
+    colorVec[18] = ARCADA_GREEN;
+
+    block[19] = true;
+    block_y0[19] = 75;
+    block_x0[19] = 190;
+    block_ylen[19] = 10;
+    block_xlen[19] = 35;
+    pointVal[19] = 1;
+    colorVec[19] = ARCADA_GREEN;
+  }
 
   for (int i = 0; i<20; i++)
   {
