@@ -1,0 +1,196 @@
+\documentclass[12pt]{article}
+\usepackage{tocloft}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\graphicspath{{images/}}
+\usepackage{parskip}
+\usepackage{fancyhdr}
+\usepackage{vmargin}
+\setmarginsrb{3 cm}{2.5 cm}{3 cm}{2.5 cm}{1 cm}{1.5 cm}{1 cm}{1.5 cm}
+\usepackage{appendix}
+\usepackage{listings} % For code importing
+\usepackage{xcolor} % for setting colors
+\input{arduinoLanguage.tex}  
+
+
+\begin{document}
+\title{Project Report}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}
+	\centering
+    \vspace*{0.5 cm}
+    \includegraphics[scale = 0.11]{isu_seal.png}\\[1.0 cm]	% University Logo
+    \textsc{\LARGE IOWA STATE UNIVERSITY}\\[2.0 cm]
+    \textsc{\large AEROSPACE ENGINEERING DEPARTMENT}\\[0.2 cm]
+    \textsc{\large Computational Techniques for Aerospace Design}\\[0.2 cm]
+	\textsc{\Large AERE 361}\\[0.5 cm]				% Course Code
+	\textsc{\Large Spring 2023}\\[0.5 cm]				% Course Code
+	\textsc{\Large Final Project Report}\\[0.2 cm]
+	\textsc{\Large Bleacher Creatures from Mars}\\[0.2 cm]
+	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	%{ \huge \bfseries \thetitle}\\
+	
+	
+	\begin{minipage}{0.8\textwidth}
+		
+			\begin{flushleft} 
+			\emph{Team Member Names :} \\
+			Burchett, Sam\linebreak
+			Dresen, Andrew\linebreak
+			Kolbeck, Casey\linebreak
+			Kotvis, Kaden\linebreak
+			Stumpf, Blake\linebreak
+			
+		\end{flushleft}
+	\end{minipage}\\[2 cm]
+	
+	\vfill
+	
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\maketitle
+\tableofcontents
+\pagebreak
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{ABSTRACT}
+Have you ever wondered how small you could make the game "Breakout"? Well, in this report we cover what must be one of the smallest versions of Breakout out there. Breakout is a game where you try to hit a ball moving around the screen with a paddle, with the goal of breaking all of the blocks on screen. Our project does that all with a Clue board! The Clue board has a tiny screen 240x240 pixel screen that is used to display the game. It also has two buttons on either side of the screen, which was perfect for moving the paddle either to the left or the right. This is our project report, and we hope you enjoy!
+
+\section{INTRODUCTION}
+
+\subsection{The Project}
+In this project it was important for us to find a practical solution to a real world problem. The problem we decided to tackle was decreasing reaction time. We then set out to solve this problem by creating an interactive and portable experience by taking an Adafruit CLUE board and recreating the classic Atari game, "Breakout." 
+
+\subsection{The Team}
+
+Breakout: Clue Edition was created by the Bleacher Creatures from Mars. The team lead is Blake Stumpf. Her job was to set up meetings and make sure everyone was staying on task. Andrew Dresen was coding lead and in charge of integrating the code onto the clue board. Casey Kolbeck, Kaden Kotvis, and Samuel Burchett were team members. All members worked on parts of the coding process, the presentation, and the report.
+
+
+\section{FEATURES}
+Our project has gone beyond what we had proposed to do. In the proposal we said that we were going to use the Python example code \ref{code:python_breakout} to make a basic version of the game Breakout on the Clue board. To make the game more like a game, levels were added based on the speed of the ball. The levels include slow, normal, fast, and impossible. This menu is shown in Figure \ref{fig:menu}. The ball speed increases by a little bit for each level. Another feature that was added was a score count. For every block that was hit, the player gets a point value that is assigned to the individual blocks, the score is displayed in the upper left hand corner of the board. A game over screen was also added to the game if the user fails to break all of the blocks before the ball goes out of bounds. If the user does manage to break all of the blocks the victory screen is then displayed. The final score is displayed on the game over and victory screens (Figure \ref{fig:gameover}). These levels were added so that players could continue to improve their reaction speed after they completed the levels or the levels became easier. The game over screen was added to ease the transition to the main menu and the score count was also added so the player could monitor their progress. All of these features make breakout on the CLUE board a more finished product. 
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=4.5in]{images/Clue_Board_Menu.jpg}
+\caption{Game Menu on the Clue board}
+\label{fig:menu}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=4.5in]{images/Gameover_Screen.jpg}
+\caption{Game Over screen of the game}
+\label{fig:gameover}
+\end{figure}
+
+
+\section{PROBLEM STATEMENT}
+Reaction time is a growing problem in aging adults. This is a sign of the brain starting function. According to  The American Physiological Society \cite{sbc} Adults have a slowing reaction time that will decrease by 2-6 ms per decade. This makes complicated task that require great reaction, reflexes , and hand eye coordination far more challenging.
+
+\section{PROBLEM SOLUTION}
+\subsection{Hardware}
+The hardware selection we had decided on/were given was a Clue board, a AAA battery pack, and an on/off button. The AAA battery pack had the job of powering the Clue board, which it did extremely well. An on/off button was also provided. This button clicked in to show it was in the "on" position and came back out for "off". There were some concepts for this button like being able to turn off and on the game, but those concepts never came to fruition and the button ended up going unused for our project. The Clue board, however, was used extensively. The small screen on the Clue was used to display the game. The two buttons on the sides of the display were used to move the paddle on the screen. The button to the left of the screen moved the paddle left and the button on the right of the screen moved the paddle to the right. This made moving the paddle intuitive, perfect for our design statement.
+
+\subsection{Before Coding}
+Before any code could be written, there was research to do. The first major piece of research was finding a library that would work for the game. Pygame was used in the base code provided by Kaden, but that library would not work since this project had to be coded in C. We found the library needed in the form of Adafruit Arcada \cite{Arcada}. This library contained everything needed to create the game.
+
+\subsection{Code}
+The code (\ref{code:arduino_breakout}) begins by creating the necessary variables to have the code work. This includes the ball position, paddle position, score, game speed, maximum score, whether the game has started or not, and block locations, size, and color. The blocks are given all of their data in the first function, aptly named setup. The maximum score is determined at this time as well. Finally, the display starts, the backlight is turned on and the screen is filled with black.
+
+Once the screen is filled, a loop begins that doesn't end. This loop keeps the game running until the device is shut off. Once the loop is initiated the menu appears, as seen in Figure \ref{fig:menuzoom}. The menu is in it's own function. It works by first displaying the text that describes how fast the game will be if you select that game mode. The game mode is chosen by clicking the right button while you cycle through modes with clicking the left button. Once a mode is selected, the game start value is set to true and the game begins. 
+\begin{figure}[!t]
+\centering
+\includegraphics[width=4.5in]{images/Clue_Board_Menu_Zoom.jpg}
+\caption{Game Menu on the Clue Board}
+\label{fig:menuzoom}
+\end{figure}
+The game begins, and the screen is filled with black before being filled with the boxes, the ball, and the paddle. This can be seen in Figure \ref{fig:playzoom}. The ball begins moving from an arbitrary point in an arbitrary direction, generally towards the paddle. The paddle is then controlled with the left and right buttons, with the left button moving it left by five pixels and the right button moving it right by five pixels. When the ball hits the paddle, the y direction is inverted and the ball travels upward. This happens for the blocks as well. The boundary works similarly, except when it hits the sides or the bottom of the screen. If the ball hits the side, the x direction is inverted instead of the y direction. If the ball hits the bottom of the screen, the game is ended as shown in Figure \ref{fig:gameoverzoom}. 
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=4.5in]{images/Breakout_Play_Zoom.jpg}
+\caption{Game Over screen of the game}
+\label{fig:playzoom}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=4.5in]{images/Gameover_Screen_Zoom.jpg}
+\caption{Game Over Screen of the Game}
+\label{fig:gameoverzoom}
+\end{figure}
+Points are calculated each time the ball hits a block. Once a block is hit, the block disappears and points are added to the counter. Additionally, the game can be ended if all of the blocks are cleared and the maximum amount of points are earned. If this happens the game displays a congratulations before resetting to the menu screen.
+
+\subsection{Solution Validity}
+The solution devised here is a pretty good one. It was tested by just playing the game until the game broke, after which the flaw was found and changed. The only major problem with this solution is that the game's physics aren't exactly the same as the original game's physics. The original game takes account for hitting the sides of the paddle and blocks and changes the direction of the code accordingly. This original system allows the ball to move in completely different directions based on your skill instead of simply making sure the ball doesn't fall into the bottom of the screen.
+
+\section{STATUS}
+
+This project is not fully complete. We achieved a working game which is fun to play. We made a ball that bounces around the screen. We were able to make blocks that the ball would bounce off of and break it. However we were only able to code a function that breaks the blocks on the top and bottom. If the block gets hit on the side it will break, however, the ball will bounce off the block as if it is bouncing off of the top or bottom of the block instead of the sides. The paddle also works and moves around the screen as intended. We also were able to make a scoring system.  There is still many bugs that need to be fixed and we weren't able to fully finish the game that we intended to make.
+
+\subsection{Lessons Learned}
+
+One team lesson that was learned is time management. Our team struggled to establish meeting times that worked for everyone. When we got closer to the presentation deadline, we realized that meetings had to be made where the majority of team members could go. This involved communication with the missing members which worked on our communication.
+
+Another lesson we learned that the action plan should change as time goes on to reflect the status of the team. Out team met for the design the project/talk about the proposal and to divide up tasks after the project was assigned and feedback was received. After the tasks were divided team members got busy with other assignments including the missions for this class. The team then texted about tasks and about meeting about the presentation. One or two team members ended up doing the coding because they were on a role with their research and implementation. Our action plan should have changed once we realized that our schedules were not what we had originally planned on. We did adapt as a team to be able to get this project done which shows our flexibility as a team to adapt to get the needed assignments done. There are ways this project planning could have happened differently, but that is a lesson learned that we can take with us into future projects including senior design.
+
+\pagebreak
+
+\section{RESULTS}
+There is no data to analyze, only a game to enjoy.
+
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=4.5in]{images/IMG_2932.jpg}
+\caption{4x5 Block Version}
+\label{fig:gameover}
+\end{figure}
+
+
+Upon being powered up, the user is presented with a blank white rectangle. Pressing the left button presents the difficulty menu. Pressing the right button starts the game. Destroying all the blocks prompts the "Game Over!" screen. If all blocks are destroyed, the "Victory!!" screen will appear with a final score of 95.
+
+
+
+\section{FUTURE WORK}
+
+If we were to continue with this project we would have a variety of future plans. Our first goal would be to fully finish the game. We would add the side collision functions which would allow blocks to be broken on the side. We would also add more levels. Once all the bricks are broken the game is won. We would make it that when this happens, the game would put blocks on again, but your game is not over. We also want to add with that is a ball speed progression. Once you finish a level the speed of the ball would then increase to make the next levels harder. The last main thing is we would like to add is a different way to move the paddle. We had the idea of using the gyroscope on the board to move the paddle based on the movement of the board.
+
+\section{CONCLUSION}
+
+Complete with color, sounds, and difficulty menu, this spin on the classic 1976 game Breakout serves as a fun and entertaining and easy to carry way for people of all ages to improve their reaction time. Soon with the addition of new maps, increasing ball speed, and more, this game could match or even improve upon the original.
+
+\newpage
+
+
+\begin{thebibliography}{unsrt}
+
+\bibitem{Arcada}
+Adafruit. GitHub - adafruit/Adafruit\_Arcada: Arduino library for gaming. https://github.com/adafruit/Adafruit\_Arcada
+
+\bibitem{sbc}
+Herold, F. (2022, June 20). Video Games Can Help Seniors Maintain Their Overall Well-Being. Sarasota Bay Club. https://blog.sarasotabayclub.net/video-games-can-help-seniors
+\end{thebibliography}
+
+\newpage
+% you need to have at least your code in your appendix
+\section{APPENDIX}
+
+\subsection{GITHUB REPOSITORY LINK}
+
+\url{https://github.com/Blake-Stumpf/361-Final-Project/tree/main}
+
+\subsection{ARDUINO SOURCE CODE}
+\label{code:arduino_breakout}
+\lstinputlisting[language=Arduino]{src/group15_breakout_v3.ino}
+
+\subsection{PYTHON REFERENCE CODE}
+\label{code:python_breakout}
+\lstinputlisting[language=python]{src/Assignment4Breakout.py}
+\end{document}
