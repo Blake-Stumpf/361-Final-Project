@@ -17,13 +17,14 @@ int user_score = 0;
 
 bool start = false;
 
-bool block[] = {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false}; 
-uint8_t block_y0[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-uint8_t block_x0[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-uint8_t block_ylen[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; 
-uint8_t block_xlen[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-int pointVal[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-uint16_t colorVec[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+// preallocates vectors
+bool block[] = {false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false}; // weather the block is active
+uint8_t block_y0[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //top left corner y location
+uint8_t block_x0[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //top left corner x location
+uint8_t block_ylen[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //length of y axis
+uint8_t block_xlen[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //length of x axis
+int pointVal[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; //point values of the blocks
+uint16_t colorVec[] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; // colors of the blocks
 
 int maxScore = 0;
 int gamespeed = 0;
@@ -212,7 +213,7 @@ void loop()
     if (pressed_buttons & ARCADA_BUTTONMASK_A) 
     {
       arcada.display->fillScreen(ARCADA_BLACK);
-      blocks();
+      blocks(); //calls the blocks function to generate the blocks
       user_score = 0;
       scoreBoard(0);
       paddle_pos = 85;
@@ -225,7 +226,7 @@ void loop()
     if (pressed_buttons & ARCADA_BUTTONMASK_B) 
     {
       arcada.display->fillScreen(ARCADA_BLACK);
-      blocks();
+      blocks(); //calls the blocks function to generate the blocks
       user_score = 0;
       scoreBoard(0);
       paddle_pos = 85;
@@ -239,13 +240,13 @@ void loop()
 
   uint8_t pressed_buttons = arcada.readButtons();
 
-  if (pressed_buttons & ARCADA_BUTTONMASK_A) 
+  if (pressed_buttons & ARCADA_BUTTONMASK_A) // moves paddle based on what button is pressed
   {
-    paddle_pos = paddle(-5,paddle_pos);
+    paddle_pos = paddle(-5,paddle_pos); // moves back 5 spots
   }
   if (pressed_buttons & ARCADA_BUTTONMASK_B) 
   {
-    paddle_pos = paddle(5,paddle_pos);
+    paddle_pos = paddle(5,paddle_pos); // moves forward 5 spots
   }
   last_buttons = buttons;
   delay(gamespeed);
@@ -273,7 +274,7 @@ uint8_t paddle(int x, uint8_t posx)
     posx = posx + x;
     if (posx < 0 || posx >= 240)
     {
-      posx = 0;
+      posx = 0; //ensures the paddle doesn't go off screen to the left
     }
     else if (posx > 240-width)
     {
@@ -303,7 +304,7 @@ void ball()
 
 bool bounds()
 {
-  uint8_t propBLX1 = 0;
+  uint8_t propBLX1 = 0; // proposed ball positions
   uint8_t propBLY1 = 0;
   uint8_t propBLX2 = 0;
   uint8_t propBLY2 = 0;
@@ -316,8 +317,9 @@ bool bounds()
   if((propBLY1 >= 225 && propBLX1 >= paddle_pos && propBLX1 <= paddle_pos+35)||(propBLY2 >= 225 && propBLX2 >= paddle_pos && propBLX2 <= paddle_pos+35))
   {
     if (((propBLX1 >= paddle_pos && propBLX1 <= paddle_pos+7) || (propBLX1 >= paddle_pos+28 && propBLX1 <= paddle_pos+35))||((propBLX2 >= paddle_pos && propBLX2 <= paddle_pos+7) || (propBLX2 >= paddle_pos+28 && propBLX2 <= paddle_pos+35)))
+    // if the ball hits the outsides of the paddle
     {
-      if ((propBLX1 >= paddle_pos && propBLX1 <= paddle_pos+17)||(propBLX2 >= paddle_pos && propBLX2 <= paddle_pos+17))
+      if ((propBLX1 >= paddle_pos && propBLX1 <= paddle_pos+17)||(propBLX2 >= paddle_pos && propBLX2 <= paddle_pos+17)) 
       {
         direcx = -3;
       }
@@ -336,9 +338,8 @@ bool bounds()
       }
 
       direcy = direcy*-1;
-      Serial.println("3,4");
     }
-    else
+    else //if hits the inside of the paddle
     {
       if ((propBLX1 >= paddle_pos && propBLX1 <= paddle_pos+17)||(propBLX2 >= paddle_pos && propBLX2 <= paddle_pos+17))
       {
@@ -358,7 +359,6 @@ bool bounds()
         direcy = -3;
       }
       direcy = direcy*-1;
-      Serial.println("4,3");
     }
   }
 
@@ -430,9 +430,9 @@ int scoreBoard(int scoreAdd)
   return user_score+scoreAdd;
 }
 
-void blocks() // position of ball
+void blocks()
 {
-  uint8_t propBLX = 0;
+  uint8_t propBLX = 0; //proposed position of the ball
   uint8_t propBLY = 0;
   if (direcx > 0)
   {
@@ -486,9 +486,9 @@ int gameMenu1()
   while (continue1 == true)
   {
     pressed_buttons = arcada.readButtons();
-    if (pressed_buttons & ARCADA_BUTTONMASK_A) 
+    if (pressed_buttons & ARCADA_BUTTONMASK_A) //iterates through speed settings
     {
-      tone(46,500,100);
+      tone(46,500,100); //plays noise
       menu1 = menu1+1;
       if(menu1 == 1)
       {
@@ -527,16 +527,7 @@ int gameMenu1()
         arcada.display->println("Impossible!");
         delay(200);
       }
-      /*
-      else if(menu1 == 5)
-      {
-        arcada.display->fillRoundRect(20, 85, 200, 60, 5, ARCADA_BLACK);
-        arcada.display->setCursor(30, 100);
-        arcada.display->setTextColor(ARCADA_WHITE);
-        arcada.display->setTextSize(4);
-        arcada.display->println("Settings");
-        delay(200);
-      }*/
+
       else
       {
         menu1 = 0;
@@ -565,12 +556,6 @@ int gameMenu1()
         arcada.display->fillScreen(ARCADA_BLACK);
         return 5;
       }
-      /*
-      else if(menu1 == 5)
-      {
-        MainsettingsMenu1();
-      }
-      */
       else
       {
         return 0;
@@ -582,66 +567,3 @@ int gameMenu1()
   return 0;
 }
 
-/*
-void MainsettingsMenu1()
-{
-  bool continue1 = true;
-  uint8_t pressed_buttons = arcada.readButtons();
-  uint8_t menu1 = 0;
-  arcada.display->fillScreen(ARCADA_BLACK);
-  arcada.display->setCursor(5, 10);
-  arcada.display->setTextColor(ARCADA_WHITE);
-  arcada.display->setTextSize(2);
-  arcada.display->println("Settings");
-  while (continue1 == true)
-  {
-    pressed_buttons = arcada.readButtons();
-    if (pressed_buttons & ARCADA_BUTTONMASK_A) 
-    {
-      tone(46,500,100);
-      menu1 = menu1+1;
-      if(menu1 == 1)
-      {
-        arcada.display->fillRect(20, 85, 200, 60, ARCADA_BLACK);
-        arcada.display->setCursor(35, 110);
-        arcada.display->setTextColor(ARCADA_MAGENTA);
-        arcada.display->setTextSize(3);
-        arcada.display->println("Ball Color");
-        delay(200);
-      }
-      else if(menu1 == 2)
-      {
-        arcada.display->fillRect(20, 85, 200, 60, ARCADA_BLACK);
-        arcada.display->setCursor(50, 110);
-        arcada.display->setTextColor(ARCADA_MAGENTA);
-        arcada.display->setTextSize(3);
-        arcada.display->println("Sound");
-        delay(200);
-      }
-
-      else
-      {
-        menu1 = 0;
-      }
-
-    }
-    if (pressed_buttons & ARCADA_BUTTONMASK_B) 
-    {
-      if(menu1 == 1)
-      {
-        return;
-      }
-      else if(menu1 == 2)
-      {
-        return;
-      }
-      else
-      {
-        return;
-      }
-    }
-
-  }
-
-}
-**/
